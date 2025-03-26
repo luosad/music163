@@ -5,13 +5,21 @@ const resolve = (dir) => path.resolve(__dirname, dir)
 module.exports = {
   plugins: [
     {
-      plugin: CracoLessPlugin
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: {
+          lessOptions: {
+            javascriptEnabled: true
+          }
+        }
+      }
     }
   ],
   webpack: {
     alias: {
       '@': resolve('src'),
-      components: resolve('src/components')
+      components: resolve('src/components'),
+      '~': resolve('node_modules')
     }
   }
 }
