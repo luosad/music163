@@ -13,6 +13,7 @@ export const fetchRecommendDataAction = createAsyncThunk(
   (argv, { dispatch }) => {
     getBanners().then((res) => {
       dispatch(changeBannersActions(res.banners))
+      // console.log(res.banners)
     })
     getHotRecommend(8).then((res) => {
       dispatch(changeHotRecommendActions(res.result))

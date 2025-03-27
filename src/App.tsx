@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import AppHeader from './components/app-header'
 import AppFooter from './components/app-footer'
 import AppPlayerBar from './views/player/app-player-bar'
+import Player from './views/player'
 
 //获取store的类型
 // type FType = typeof store.getState
@@ -19,7 +20,7 @@ function App() {
       </Suspense>
 
       {/* 播放器工具栏 */}
-      <AppPlayerBar />
+      <Player />
       <AppFooter></AppFooter>
     </div>
   )
