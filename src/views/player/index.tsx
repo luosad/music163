@@ -16,8 +16,8 @@ const Player: React.FC<Iprops> = (props) => {
   /* 获取数据 */
   const dispatch = useMyDispatch()
   useEffect(() => {
-    dispatch(fetchCurrentSongAction())
-    dispatch(fetchCurrentSongUrlAction(386538))
+    dispatch(fetchCurrentSongAction(347230))
+    // dispatch(fetchCurrentSongUrlAction(386538))
   }, [])
   return (
     <div>

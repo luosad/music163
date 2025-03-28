@@ -23,7 +23,7 @@ const store = configureStore({
 // type StateType=typeof state
 //方法二
 type GetStateType = typeof store.getState
-type IRootState = ReturnType<GetStateType>
+export type IRootState = ReturnType<GetStateType>
 type DispatchType = typeof store.dispatch
 //自定义hook
 export const useMySelector: TypedUseSelectorHook<IRootState> = useSelector

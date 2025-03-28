@@ -1,33 +1,41 @@
 import styled from 'styled-components'
+
 export const RankingItemWrapper = styled.div`
   width: 230px;
   &:last-child {
     width: 228px;
   }
+
   .header {
     height: 100px;
     display: flex;
 
     margin: 20px 0 0 20px;
 
-    .name {
-      font-size: 14px;
-      color: #333;
-      font-weight: 700;
-    }
-
     .image {
       width: 80px;
       height: 80px;
+      position: relative;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
     }
 
     .info {
       margin: 5px 0 0 10px;
 
-      .a {
+      .name {
         font-size: 14px;
         color: #333;
-        font-weight: 400;
+        font-weight: 700;
+      }
+
+      a {
+        font-size: 14px;
+        color: #333;
+        font-weight: 700;
       }
 
       .btn {
@@ -59,19 +67,19 @@ export const RankingItemWrapper = styled.div`
 
   .list {
     .item {
+      margin-left: 20px;
       position: relative;
       display: flex;
       align-items: center;
       height: 32px;
 
-      :nth-child(-n + 3) .rank {
+      &:nth-child(-n + 3) .rank {
         color: #c10d0c;
       }
 
       .rank {
         width: 35px;
         text-align: center;
-        margin-left: 10px;
         font-size: 16px;
       }
 
@@ -85,10 +93,19 @@ export const RankingItemWrapper = styled.div`
 
         .name {
           flex: 1;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
 
         .operate {
           display: flex;
+          height: 17px;
           align-items: center;
           display: none;
           width: 82px;
@@ -98,13 +115,14 @@ export const RankingItemWrapper = styled.div`
             height: 17px;
             margin-left: 8px;
             cursor: pointer;
+            display: inline-block;
           }
 
           .play {
             background-position: -267px -268px;
           }
 
-          .add {
+          .addto {
             position: relative;
             top: 2px;
             background-position: 0 -700px;
@@ -125,10 +143,14 @@ export const RankingItemWrapper = styled.div`
   }
 
   .footer {
-    display: flex;
     height: 32px;
+    display: flex;
     align-items: center;
+    margin-right: 32px;
     justify-content: flex-end;
-    padding-right: 20px;
+
+    a {
+      color: #000;
+    }
   }
 `

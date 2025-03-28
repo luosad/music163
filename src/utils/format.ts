@@ -10,7 +10,7 @@ export function formatTime(time: number): string {
   const seconds = Math.floor(time % 60) // 获取秒数
 
   // 如果秒数小于10，在前面补0
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
 }
 
 //格式化图片大小
@@ -22,7 +22,7 @@ export function formateImgUrl(
   return url + `?param=${width}y${height}`
 }
 
-//获取播放音频
+// 获取播放音频
 // export function getPlayUrl(id: number) {
 //   // return `https://music.163.com/song/media/outer/url?id=${id}.mp3`
 //   return `http://codercba.com:9002/song/url/v1?id=${id}.mp3`

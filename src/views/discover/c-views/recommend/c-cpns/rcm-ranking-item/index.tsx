@@ -4,6 +4,8 @@ import { FC, ReactElement, memo } from 'react'
 import type { ReactNode } from 'react'
 import { RankingItemWrapper } from './style'
 import { formateImgUrl } from '@/utils/format'
+import { useMyDispatch } from '@/store'
+import { fetchCurrentSongAction } from '@/views/player/store/player'
 interface Iprops {
   children?: ReactNode
   itemData: any
@@ -13,6 +15,11 @@ const RankingItem: React.FC<Iprops> = (props) => {
   // console.log(itemData)
   const { tracks = [] } = itemData
   // console.log(tracks)
+
+  const dispatch = useMyDispatch()
+  function handlePlayClick(id: number) {
+    dispatch(fetchCurrentSongAction(id))
+  }
   return (
     <RankingItemWrapper>
       <div className="header">
@@ -34,9 +41,12 @@ const RankingItem: React.FC<Iprops> = (props) => {
               <div className="info">
                 <div className="name">{item.name}</div>
                 <div className="operate">
-                  <a className="sprite_02 btn play"></a>
-                  <a className="sprite_icon2 btn add"></a>
-                  <a className="sprite_02 btn favor"></a>
+                  <span
+                    className="sprite_02 btn play"
+                    onClick={() => handlePlayClick(item.id)}
+                  ></span>
+                  <span className="sprite_icon2 btn addto"></span>
+                  <span className="sprite_02 btn favor"></span>
                 </div>
               </div>
             </div>
