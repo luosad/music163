@@ -24,6 +24,7 @@ const routes: RouteObject[] = [
   {
     path: '/',
     element: <Navigate to="/discover" />
+    // element: <Discover />
   },
   {
     path: '/discover',

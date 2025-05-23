@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.div`
   .content {
     display: flex;
     justify-content: space-between;
+    height: 70px;
   }
 
   .divider {
@@ -22,7 +23,7 @@ export const HeaderLeft = styled.div`
   .logo {
     display: block;
     width: 176px;
-    height: 70px;
+    height: 69px;
     background-position: 0 0;
     text-indent: -9999px;
   }
@@ -38,60 +39,34 @@ export const HeaderLeft = styled.div`
         display: block;
         padding: 0 20px;
         color: #ccc;
-      }
-
-      :last-of-type a {
-        position: relative;
-        ::after {
-          position: absolute;
-          content: 'hello';
-          width: 28px;
-          height: 19px;
-          background-image: url(${require('@/assets/img/sprite_01.png')});
-          background-position: -190px 0;
-          top: 20px;
-          right: -15px;
-        }
-      }
-
-      &:hover a,
-      .active {
-        color: #fff;
-        background: #000;
         text-decoration: none;
-      }
 
-      .active .icon {
-        position: absolute;
-        display: inline-block;
-        width: 12px;
-        height: 7px;
-        bottom: -1px;
-        left: 50%;
-        transform: translate(-50%, 0);
-        background-position: -226px 0;
+        &:hover,
+        &.active {
+          color: #fff;
+          background: #000;
+        }
+
+        &.active .icon {
+          position: absolute;
+          display: inline-block;
+          width: 12px;
+          height: 7px;
+          bottom: -1px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-position: -226px 0;
+        }
       }
     }
   }
 `
+
 export const HeaderRight = styled.div`
   display: flex;
   align-items: center;
   color: #ccc;
   font-size: 12px;
-
-  .search {
-    width: 158px;
-    height: 32px;
-    border-radius: 16px;
-    cursor: text;
-
-    input {
-      &::placeholder {
-        font-size: 12px;
-      }
-    }
-  }
 
   .center {
     width: 90px;
@@ -101,11 +76,68 @@ export const HeaderRight = styled.div`
     border: 1px solid #666;
     border-radius: 16px;
     margin: 0 16px;
-  }
-  .center:hover,
-  .login:hover {
-    color: #fff;
-    border-color: #fff;
     cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+  }
+
+  .login {
+    color: #ccc;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+`
+
+export const SearchWrapper = styled.div`
+  position: relative;
+  width: 158px;
+
+  .search {
+    width: 100%;
+    height: 32px;
+    border-radius: 16px;
+
+    input {
+      &::placeholder {
+        font-size: 12px;
+      }
+    }
+  }
+`
+
+export const SuggestList = styled.ul`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+
+  li {
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #f5f5f5;
+      color: #000;
+    }
   }
 `

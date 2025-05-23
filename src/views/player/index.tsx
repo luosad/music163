@@ -19,6 +19,7 @@ const Player: React.FC<Iprops> = (props) => {
     dispatch(fetchCurrentSongAction(347230))
     // dispatch(fetchCurrentSongUrlAction(386538))
   }, [])
+
   return (
     <div>
       <AppPlayerBar></AppPlayerBar>

@@ -15,6 +15,12 @@ export default function myRequest(option) {
         // 1.当发送网络请求时, 在页面中添加一个loading组件, 作为动画
 
         // 2.某些请求要求用户必须登录, 判断用户是否有token, 如果没有token跳转到login页面
+        // const token = localStorage.getItem('token')
+
+        // // 判断 token 是否为有效的非空、非 'undefined' 字符串
+        // if (token) {
+        //   config.headers.Authorization = `Bearer ${token}`
+        // }
 
         // 3.对请求的参数进行序列化(看服务器是否需要序列化)
         // config.data = qs.stringify(config.data)
@@ -31,12 +37,12 @@ export default function myRequest(option) {
 
     instance.interceptors.response.use(
       (response) => {
-        // console.log('来到了response拦截success中');
+        // console.log('来到了response拦截success中')
         return response.data
       },
       (err) => {
         console.log('来到了response拦截failure中')
-        console.log(err)
+        console.log('这是response拦截器', err)
         if (err && err.response) {
           switch (err.response.status) {
             case 400:
@@ -49,7 +55,7 @@ export default function myRequest(option) {
               err.message = '其他错误信息'
           }
         }
-        return err
+        return Promise.reject(err)
       }
     )
 

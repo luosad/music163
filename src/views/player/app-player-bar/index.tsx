@@ -22,10 +22,11 @@ import {
   BarPlayerInfo,
   PlayerBarWrapper
 } from './style'
-import { Link } from 'react-router-dom'
+import { Form, Link } from 'react-router-dom'
 import { useMySelector } from '@/store'
 import { formateCount, formateImgUrl, formatTime } from '@/utils/format'
 import { shallowEqual } from 'react-redux'
+import { throttle } from 'lodash'
 interface Iprops {
   children?: ReactNode
 }
@@ -170,16 +171,28 @@ const AppPlayerBar: FC<Iprops> = (props) => {
   }
 
   // 拖动滑块时触发
+  // const sliderChange = useCallback(
+  //   throttle((value: number) => {
+  //     setIsChanging(true)
+  //     if (audioRef.current && duration > 0) {
+  //       const currentTime = (value / 100) * duration * 1000
+  //       setCurrentTime(currentTime)
+  //       setProgress(value)
+  //     }
+  //     console.log('经过节流')
+  //   }, 100), // 每 100ms 最多触发一次
+  //   [duration]
+  // )
   const sliderChange = useCallback(
     (value: number) => {
       setIsChanging(true)
       if (audioRef.current && duration > 0) {
-        const currentTime = (value / 100) * duration * 1000 // 计算当前播放时间（毫秒）
+        const currentTime = (value / 100) * duration * 1000
         setCurrentTime(currentTime)
         setProgress(value)
-        // console.log(`现在的进度${value}`)
       }
-    },
+      console.log('不经过节流')
+    }, // 每 100ms 最多触发一次
     [duration]
   )
 
@@ -312,4 +325,4 @@ const AppPlayerBar: FC<Iprops> = (props) => {
   )
 }
 
-export default memo(AppPlayerBar)
+export default AppPlayerBar

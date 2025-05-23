@@ -60,4 +60,4 @@ const RankingItem: React.FC<Iprops> = (props) => {
   )
 }
 
-export default memo(RankingItem)
+export default RankingItem
